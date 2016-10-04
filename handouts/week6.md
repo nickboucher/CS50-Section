@@ -91,7 +91,7 @@ strcpy(nicholas.name, "Nicholas Boucher");
 strcpy(nicholas.house, "Mather");
 nicholas.year = 2019;
 ```
-## `Typedef`ing
+## Typedefing
 
 If we do not want to have to type `struct` before the name of our structure every time we declare a variable of that type (e.g. `struct student nicholas;`), we can `typedef` the struct.
 
@@ -113,3 +113,22 @@ student nicholas;
 ```
 
 # Linked Lists
+
+So far, we have been forced to use arrays for any time we want to deal with a series of data. Arrays have the drawback that they are a fixed size and cannot change sizes after declaration. It thus becomes difficult to deal with series of an unknown size.
+
+Introducing: Linked Lists. Linked lists allow us to store a virtually unlimited amount of data in a series with the ability to modify, insert, and remove data during runtime.
+
+Linked lists are a clever combination of two recently introduced topics: pointers and structures. Linked lists work by creating a structure which include an element that is a pointer to something *of its own type*. That is, it points to another version of itself. We call each element within this sort of list a *node*. Consider the structure declared below.
+
+``c
+typedef struct node
+{
+    // just some form of data; could be a char* or whatever
+    int i;
+
+    // pointer to next node; have to include `struct` since this is a recursive definition
+    struct node *next;
+
+}
+node;
+``
