@@ -10,9 +10,8 @@
 2. Structures
 3. Linked Lists
 4. Hash Tables
-5. Tries
-6. Stacks/Queues
-7. Huffman Coding
+5. Trees/Tries
+6. Stacks/Queues & Huffman Coding
 
 # Notes from Past P-Set
 
@@ -138,3 +137,55 @@ Each node contains a piece of data (or perhaps multiple pieces of data) and a po
 The following visualization depicts the high-level picture of how a linked list containing numbers 3,4,5,6 may look:
 
 ![Linked List](img/LinkedList.jpg)
+
+To find elements within a linked list, we must iterate over the array. This is often easiest with recursive functions!
+
+## Example
+
+As a class, we will implement a linked list and mechanism to search through it.
+
+## Adding & Removing Elements
+
+To add an element to a linked list, you must follow these steps:
+
+1. Malloc space for the new list element and populate the structure with data.
+2. Change the `next` pointer of the element you would like to place this new element after to point to this new element.
+3. Update the `next` pointer of the new element to point to the element that was previously after the element before the new element.
+
+To remove an element:
+
+1. Update the previous element's pointer to point to the following element.
+2. `Free` the element you are removing.
+
+## Discussion
+
+We will discuss as a class the following  linked list activities:
+The basic operations students should be able to do are:
+
+* Create a linked list
+* Insert into a linked list (at head, tail, middle)
+* Delete out of a linked list
+* Delete an entire linked list
+* And iterate over a linked list
+
+# Hash Tables
+
+A hash table is basically an associative array where the position of each element in the array is decided by a hash function. A hash function can be anything; for example, if placing strings into a hash table, your hash table could be of size 26 while your function distributes words based on their first ASCII character. Alternatively, you may choose to create a larger hash table and calculate where to put a word based on the summation of a word’s characters.
+
+![Hash Table](img/hashtable.jpg)
+
+A hash function describes where to insert a word and, when necessary, where to look up a word. In an ideal world a hash table will provide constant time lookup (which is possible if there are no *collisions* when inserting!) Collisions occur when a hash function places two different elements into the same "slot" in an array.
+
+Linked Lists are, for all operations, an upper-bound of O(n) time and a lower bound of Ω(1) time.
+
+Hash tables are, for all operations, the same. The difference is in a hash table, in the real world the upper-bound effectively becomes O(n / k), which still theoretically reduces to O(n), though has clearly noticeable optimizations with respect to real world running time.
+
+# Trees/Tries
+
+Trees are something that we have seen before - tries are a special kind of tree. They contain an array of pointers to the children of the current node.
+
+See on-board demonstration in section.
+
+# Stacks/Queues & Huffman Coding
+
+Time permitting, we will have a discussion on Stacks/Queues and Huffman coding, although they are not explicit necessary for the upcoming p-set.
