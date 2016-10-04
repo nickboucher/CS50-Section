@@ -339,7 +339,7 @@ Recursive code is code in which a function makes a call to itself. It is sort of
 
 Recursive algorithms need to have at least one *base case* (in which the function does not call itself) and at least one *recursive case* (in which the function does call itself).
 
-Some programming problems are simply easiest/cleanest to implement recursively. Beyond that, recursive code is beatiful once you get used to seeing it.
+Some programming problems are simply easiest/cleanest to implement recursively. Beyond that, recursive code is beautiful once you get used to seeing it.
 
 Here is an example of implementing the Fibonacci sequence in C using recursion:
 

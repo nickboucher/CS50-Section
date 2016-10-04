@@ -134,3 +134,7 @@ node;
 ```
 
 Each node contains a piece of data (or perhaps multiple pieces of data) and a pointer to the next node. When re reach an element whose `next == NULL`, then we know we have reached the end of the list.
+
+The following visualization depicts the high-level picture of how a linked list containing numbers 3,4,5,6 may look:
+
+![Linked List](img/LinkedList.jpg)
