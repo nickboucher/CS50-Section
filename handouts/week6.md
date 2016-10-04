@@ -132,3 +132,5 @@ typedef struct node
 }
 node;
 ```
+
+Each node contains a piece of data (or perhaps multiple pieces of data) and a pointer to the next node. When re reach an element whose `next == NULL`, then we know we have reached the end of the list.
