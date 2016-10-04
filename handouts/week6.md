@@ -120,7 +120,7 @@ Introducing: Linked Lists. Linked lists allow us to store a virtually unlimited 
 
 Linked lists are a clever combination of two recently introduced topics: pointers and structures. Linked lists work by creating a structure which include an element that is a pointer to something *of its own type*. That is, it points to another version of itself. We call each element within this sort of list a *node*. Consider the structure declared below.
 
-``c
+```c
 typedef struct node
 {
     // just some form of data; could be a char* or whatever
@@ -131,4 +131,4 @@ typedef struct node
 
 }
 node;
-``
+```
