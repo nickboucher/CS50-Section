@@ -118,19 +118,20 @@ Say you want to use a function besides `main`. It's not enough to just write the
 
 // function prototype
 // <return type> <name>(<argument type>, ...)
-// this is the same as in the function definition, except you don't
-// specify the argument names
+// this is the same as in the function definition, except
+// you don't specify the argument names
 float months_to_years(int);
 
 int main(void)
 {
     // prints 1.50
-    // (the "%.2f" means to print a float with 2 decimal places)
+    // (the "%.2f" means to print a float with
+    // 2 decimal places)
     printf("%.2f\n", months_to_years(18));
 }
 
 // function definition
-// <return type> <name>(<argument type> <argument name>, ...)
+//<return type> <name>(<argument type> <argument name>,...)
 // here's where you *actually* implement the function
 float months_to_years(int months)
 {
@@ -295,7 +296,8 @@ This sort sorts the array as it sees it, *inserting* each element in its proper 
 ```
 for each element in the array:
     look at the element X directly to our right
-    shift all elements on our left to the right if they're > X
+    shift all elements on our left to the
+          right if they're > X
     put X in the vacated spot
 ```
 
@@ -314,9 +316,10 @@ function sort:
 function merge:
     create temporary array
     while elements in left & right sub-arrays:
-        compare first elements of two sub-arrays; place smaller one
+        compare first elements of two sub-arrays;
+            place smaller one in temp array
+    dump any remaining elements in longer sub-array
             in temp array
-    dump any remaining elements in longer sub-array in temp array
     copy temp array onto original array
 ```
 

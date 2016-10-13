@@ -4,6 +4,12 @@
 > Nicholas Boucher
 > nboucher@college.harvard.edu  
 
+# Important links
+* This week's material on Study50: [Study50](https://study.cs50.net/?toc=linked_lists,hashtables,tries,trees,stacks,queues)
+* C language reference: https://reference.cs50.net/
+* CS50 Discuss: https://cs50.harvard.edu/discuss
+* CS50 Style Guide: https://manual.cs50.net/style/
+
 # Section Agenda
 
 1. Notes from Past P-Set
@@ -123,28 +129,65 @@ Linked lists are a clever combination of two recently introduced topics: pointer
 typedef struct node
 {
     // just some form of data; could be a char* or whatever
-    int i;
+    int val;
 
-    // pointer to next node; have to include `struct` since this is a recursive definition
+    // pointer to next node; have to include `struct`
+    // since this is a recursive definition
     struct node *next;
 
 }
 node;
 ```
 
-Each node contains a piece of data (or perhaps multiple pieces of data) and a pointer to the next node. When re reach an element whose `next == NULL`, then we know we have reached the end of the list.
+Each node contains a piece of data (or perhaps multiple pieces of data) and a pointer to the next node. When we reach an element whose `next == NULL`, then we know we have reached the end of the list.
 
 The following visualization depicts the high-level picture of how a linked list containing numbers 3,4,5,6 may look:
 
 ![Linked List](img/LinkedList.jpg)
 
-To find elements within a linked list, we must iterate over the array. This is often easiest with recursive functions!
+## Checking if an element is in a list
 
-## Example
+To find elements within a linked list, we must iterate over the array. This can be done using a `while` loop as follows:
 
-As a class, we will implement a linked list and mechanism to search through it.
+```c
+bool find(node* ptr, int val)
+{
+  while(ptr != NULL)
+  {
+      if(ptr->val == val)
+      {
+          return true;
+      }
+      else
+      {
+          ptr = ptr->next;
+      }
+  }
+  return false;
+}
+```
 
-## Adding & Removing Elements
+Searching through a list can also be done using recursion:
+
+```c
+bool find(node* ptr, int val)
+{
+  if (ptr == NULL)
+  {
+    return false;
+  }
+  if (ptr->val == val)
+  {
+    return true;
+  }
+  else
+  {
+    return find(ptr->next, val);
+  }
+}
+```
+
+## Adding Elements
 
 To add an element to a linked list, you must follow these steps:
 
@@ -152,21 +195,91 @@ To add an element to a linked list, you must follow these steps:
 2. Change the `next` pointer of the element you would like to place this new element after to point to this new element.
 3. Update the `next` pointer of the new element to point to the element that was previously after the element before the new element.
 
+This is illustrated the following code, which inserts the value at the end of the existing list:
+
+```c
+void insert(node* head, int val)
+{
+  node* element = malloc(sizeof(node));
+  element->val = val;
+
+  while (head->next != NULL)
+  {
+    head = head->next;
+  }
+
+  head->next = element;
+  element->next = NULL;
+}
+```
+
+Using the above code, we could create a linked list by continuing to add elements to that list:
+
+```c
+int main(void)
+{
+  node* head = malloc(sizeof(node));
+  head->val = 1;
+
+  insert(head, 2);
+  insert(head, 3);
+  insert(head, 4);
+
+  return 0;
+}
+```
+
+Of course, you could do this more efficiently by adding elements "in one pass" while looping through the linked list without having to traverse the entire list each time you add an element.
+
+## Removing an Element
+
 To remove an element:
 
 1. Update the previous element's pointer to point to the following element.
 2. `Free` the element you are removing.
 
-## Discussion
+This is illustrated in the following code, which removes one occurrence of a given value `val` from the list (returning true if it is removed and false if it is not):
 
-We will discuss as a class the following  linked list activities:
-The basic operations students should be able to do are:
+```c
+/* Assumption: The element we are removing is not in the
+ * first node of the array. You could design code that
+  * would do this, but it would be more verbose. */
+bool remove (node* head, int val)
+{
+  node* prev = head;
+  head = head->next;
 
-* Create a linked list
-* Insert into a linked list (at head, tail, middle)
-* Delete out of a linked list
-* Delete an entire linked list
-* And iterate over a linked list
+  while (head != NULL)
+  {
+    if (head->val == val) {
+      prev->next = head->next;
+      free(head);
+      return true;
+    }
+    else {
+      prev = head;
+      head = head->next;
+    }
+  }
+  return false;
+}
+```
+
+## Delete an Entire Linked list
+
+To delete an entire linked list, do the following:
+
+```c
+void delete(node* head)
+{
+  while (head != NULL)
+  {
+    node* next = head->next;
+    free(head);
+    head = next;
+  }
+}
+```
 
 # Hash Tables
 
@@ -184,8 +297,12 @@ Hash tables are, for all operations, the same. The difference is in a hash table
 
 Trees are something that we have seen before - tries are a special kind of tree. They contain an array of pointers to the children of the current node.
 
-See on-board demonstration in section.
+See on-board demonstration in section, or for more information see the study50 links at the top of this document.
 
 # Stacks/Queues & Huffman Coding
 
-Time permitting, we will have a discussion on Stacks/Queues and Huffman coding, although they are not explicit necessary for the upcoming p-set.
+Stacks and queues are data structures that are essentially special kinds of linked lists. A stack is First-In-Last-Out, or FILO. That is, the most recent element added (*pushed*) to a stack is the first element to be removed (*popped*). A queue is First-In-First-Out, or FIFO. That is, the first element added (*enqueued*) is the first element to be removed (*dequeued*).
+
+Huffman coding is a special technique that we can use to compress data (think, for example, of .zip files on your computer). Huffman coding works by replacing the ASCII values of frequently used characters with shorter values and keeping a "key" table to associate these values with their actual meaning.
+
+For more information on these topics, see the study50 links at the top of this document.
