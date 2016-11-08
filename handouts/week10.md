@@ -115,7 +115,7 @@ For example, consider the following HTML document:
 
 The DOM for the above document could be represented graphically as follows:
 
-![DOM Visualization](img/DOM.jpg)
+![DOM Visualization](https://raw.githubusercontent.com/nickboucher32/CS50-Section/master/handouts/img/DOM.jpg)
 
 JavaScript has the ability to change things in the DOM programmatically. Consider the following Javascript code:
 
@@ -136,7 +136,7 @@ JavaScript has the ability to change things in the DOM programmatically. Conside
 
 After executing the above code, the webpage that the user is viewing in their web browser will appear to have changed and the updated DOM will look like:
 
-![DOM Visualization](img/DOM-Updated.jpg)
+![DOM Visualization](https://raw.githubusercontent.com/nickboucher32/CS50-Section/master/handouts/img/DOM-Updated.jpg)
 
 # jQuery
 
