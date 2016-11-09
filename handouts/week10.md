@@ -155,7 +155,7 @@ document.getElementById("quote").innerHTML = "alllllright";
 in jQuery as:
 
 ```JavaScript
-#("#quote").text("alllllright");
+$("#quote").text("alllllright");
 ```
 
 Note that in jQuery, `#` denotes an HTML element's ID and `.` denotes an HTML element's class.
